@@ -6,8 +6,8 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  // La langue vit uniquement dans l'URL : « / » est le français, « /en/… »
-  // l'anglais. Aucun cookie, aucune redirection automatique (D-104).
+  // The locale lives in the URL only: "/" is French, "/en/..." is English.
+  // No cookie, no automatic redirect.
   i18n: {
     defaultLocale: 'fr',
     strategy: 'prefix_except_default',

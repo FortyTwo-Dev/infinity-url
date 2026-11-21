@@ -13,14 +13,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Le nom du job est `test` : c'est l'identifiant attendu par la règle de
-  # protection de branche. Ne pas le renommer sans mettre à jour la règle.
+  # The job must stay named `test`: it is the status check the branch rule waits for.
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # Les actions sont épinglées par commit, pas par tag : un tag est
-      # mutable et peut être déplacé vers un autre code.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
@@ -34,14 +31,10 @@ jobs:
           key: bun-${{ hashFiles('bun.lock') }}
 
       - name: Install dependencies
-        # `--ignore-scripts` bloque les scripts de cycle de vie des paquets :
-        # sans lui, installer une dépendance revient à exécuter son code.
         run: bun install --frozen-lockfile --ignore-scripts
 
       - name: Prepare Nuxt
-        # Notre propre script, lancé explicitement puisqu'il est bloqué juste
-        # au-dessus : il génère les types consommés par le typecheck.
-        run: bunx nuxi prepare
+        run: bun run postinstall
 
       - name: Typecheck
         run: bun run typecheck
