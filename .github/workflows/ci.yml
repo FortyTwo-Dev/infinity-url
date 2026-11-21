@@ -34,7 +34,14 @@ jobs:
           key: bun-${{ hashFiles('bun.lock') }}
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        # `--ignore-scripts` bloque les scripts de cycle de vie des paquets :
+        # sans lui, installer une dépendance revient à exécuter son code.
+        run: bun install --frozen-lockfile --ignore-scripts
+
+      - name: Prepare Nuxt
+        # Notre propre script, lancé explicitement puisqu'il est bloqué juste
+        # au-dessus : il génère les types consommés par le typecheck.
+        run: bunx nuxi prepare
 
       - name: Typecheck
         run: bun run typecheck
