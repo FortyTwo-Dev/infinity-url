@@ -212,6 +212,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["report"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/verification/resend": {
         parameters: {
             query?: never;
@@ -457,6 +473,17 @@ export interface components {
             slug?: string | null;
             /** Format: date-time */
             expires_at?: string | null;
+        };
+        /** StoreReportRequest */
+        StoreReportRequest: {
+            slug: string;
+            /** @enum {string} */
+            category: "phishing" | "malware" | "other";
+            details?: string | null;
+            /** Format: email */
+            email?: string | null;
+            /** @description Honeypot: invisible, must stay empty. A filled field is a bot. */
+            website?: string | null;
         };
         /** StoreTokenRequest */
         StoreTokenRequest: {
@@ -1090,6 +1117,46 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            422: components["responses"]["ValidationException"];
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description Error overview. */
+                        message: string;
+                    };
+                };
+            };
+        };
+    };
+    report: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StoreReportRequest"];
+            };
+        };
+        responses: {
+            /** @description Always accepted, whether the link exists or not. */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reference: string;
+                        status: string;
+                    };
+                };
             };
             422: components["responses"]["ValidationException"];
             /** @description Too many requests */
