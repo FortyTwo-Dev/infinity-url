@@ -44,7 +44,9 @@
       "successTitle": "Vérifiez votre boîte mail",
       "successBody": "Si l'adresse peut être utilisée, un email de vérification vient d'être envoyé. Ouvrez-le pour activer votre compte.",
       "haveAccount": "Vous avez déjà un compte ?",
-      "loginLink": "Se connecter"
+      "loginLink": "Se connecter",
+      "closedTitle": "Les inscriptions sont fermées",
+      "closedBody": "Nous n'ouvrons pas de nouveau compte pour le moment. Revenez plus tard : aucune donnée n'a été conservée."
     },
     "verify": {
       "title": "Vérification de l'email",
@@ -133,7 +135,9 @@
       "totp_invalid": "Ce code est invalide.",
       "token_revoked": "Votre session a expiré. Reconnectez-vous.",
       "network_error": "Impossible de joindre le service. Vérifiez votre connexion.",
-      "unknown": "Une erreur inattendue est survenue."
+      "unknown": "Une erreur inattendue est survenue.",
+      "account_suspended": "Ce compte est suspendu : la création de liens est bloquée.",
+      "signups_closed": "Les inscriptions sont fermées pour le moment."
     },
     "fields": {
       "email": "Saisissez une adresse email valide.",
@@ -144,7 +148,9 @@
       "code": "Saisissez un code valide.",
       "recovery_code": "Saisissez un code de récupération valide.",
       "token": "Ce lien est invalide ou expiré.",
-      "current_password": "Le mot de passe actuel est incorrect."
+      "current_password": "Le mot de passe actuel est incorrect.",
+      "category": "Choisissez un motif.",
+      "details": "Deux mille caractères maximum."
     },
     "page": {
       "forbiddenTitle": "Accès indisponible",
@@ -264,5 +270,50 @@
   "theme": {
     "toDark": "Passer en thème sombre",
     "toLight": "Passer en thème clair"
+  },
+  "abuse": {
+    "report": {
+      "title": "Signaler un lien",
+      "subtitle": "Un lien court reçu vous semble suspect ? Signalez-le sans créer de compte.",
+      "slug": "Lien court",
+      "slugHint": "Le slug ou l'adresse reçue, par exemple abc123 ou https://iurl.fr/abc123.",
+      "category": "Motif",
+      "categoryPhishing": "Hameçonnage",
+      "categoryMalware": "Logiciel malveillant",
+      "categoryOther": "Autre",
+      "details": "Description (facultatif)",
+      "detailsHint": "Deux mille caractères maximum.",
+      "email": "Email (facultatif)",
+      "emailHint": "Uniquement pour vous répondre, jamais pour vous identifier.",
+      "anonymityNote": "Sans email, votre signalement reste entièrement anonyme : aucune adresse IP, aucun cookie et aucune empreinte ne sont conservés.",
+      "website": "Site web",
+      "submit": "Signaler ce lien",
+      "submitting": "Envoi…",
+      "successTitle": "Signalement reçu",
+      "successBody": "Référence : {reference}. Nous traitons ce signalement sous 48 heures.",
+      "successAnonymity": "La confirmation ne précise pas si le lien existe : c'est volontaire, pour protéger les liens de tous les clients.",
+      "successAgain": "Signaler un autre lien",
+      "responseTime": "Un humain qualifie chaque signalement sous 48 heures. Le lien n'est jamais bloqué automatiquement."
+    },
+    "page": {
+      "title": "Abus et signalement",
+      "subtitle": "Comment signaler un lien, et ce que nous en faisons.",
+      "procedureTitle": "La procédure",
+      "step1Title": "Sous 24 heures ouvrées.",
+      "step1Body": "Accusé de réception du signalement.",
+      "step2Title": "Sous 48 heures.",
+      "step2Body": "Qualification humaine : malveillant, litigieux ou infondé. Aucun signalement n'est traité automatiquement.",
+      "step3Title": "Immédiatement après qualification.",
+      "step3Body": "Si le lien est malveillant, il est bloqué : la page publique répond 403 avec une explication, et le propriétaire est notifié avec le motif. Les statistiques agrégées sont conservées.",
+      "step4Title": "En cas de récidive.",
+      "step4Body": "Le domaine de destination est ajouté à notre liste locale, et le compte peut être suspendu. La connexion et l'export des données restent possibles.",
+      "contactTitle": "Nous contacter",
+      "contactBody": "Le point de contact unique, pour les utilisateurs comme pour les autorités, est l'adresse abuse. Elle est aussi publiée dans le WHOIS et dans un enregistrement DNS TXT.",
+      "reportBody": "Le formulaire de signalement ne demande aucun compte, aucun cookie et aucune preuve. Il est le canal recommandé pour un lien court.",
+      "reportCta": "Signaler un lien",
+      "dsaTitle": "Digital Services Act",
+      "dsaBody": "Infinity URL est un service d'hébergement au sens du DSA : il stocke, à la demande d'un utilisateur, des informations. Il fournit un point de contact, un mécanisme de notification et d'action, et motive chaque restriction imposée à un utilisateur.",
+      "dsaMonitoring": "Le DSA consacre l'absence d'obligation générale de surveillance. Nous ne surveillons pas les clics des visiteurs ; en revanche, nous réagissons promptement à chaque notification reçue. Cette page décrit une procédure opérationnelle, pas un texte contractuel."
+    }
   }
 }
