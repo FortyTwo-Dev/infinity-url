@@ -36,8 +36,142 @@ jobs:
       - name: Prepare Nuxt
         run: bun run postinstall
 
+      - name: Lint
+        run: bun run lint
+
+      - name: Contract types
+        run: bun run types:check
+
       - name: Typecheck
         run: bun run typecheck
 
+      - name: Tests
+        run: bun run test
+
       - name: Build
         run: bun run build
+
+  # The E2E job uses the public API repository. The dashboard drives the real
+  # API, PostgreSQL, Valkey and Mailpit: no mocked contract on this path.
+  e2e:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: infinity_url_e2e
+          POSTGRES_USER: infinity_url
+          POSTGRES_PASSWORD: secret
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U infinity_url -d infinity_url_e2e"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+      valkey:
+        image: valkey/valkey:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "valkey-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+      mailpit:
+        image: axllent/mailpit:v1.34
+        ports:
+          - 1025:1025
+          - 8025:8025
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Checkout the API
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          repository: FortyTwo-Dev/infinity-url-api
+          path: api
+
+      - uses: shivammathur/setup-php@4424c9aab975b57bd706ee5a39c6b4334d6e4f60 # 2.40.0
+        with:
+          php-version: '8.5'
+          extensions: pdo_pgsql, redis, pcntl, intl, mbstring, sodium, dom, xml
+
+      - name: Install the API
+        run: composer install --no-interaction --prefer-dist --no-progress
+        working-directory: api
+
+      - name: Prepare the API
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          php -r "file_put_contents('.env', PHP_EOL.'BLIND_INDEX_KEY='.base64_encode(random_bytes(32)).PHP_EOL, FILE_APPEND);"
+          openssl rand -hex 32 > /tmp/analytics.salt
+          DB_DATABASE=infinity_url_e2e php artisan migrate --seed --force
+          DB_DATABASE=infinity_url_e2e php artisan cache:clear
+        working-directory: api
+
+      - name: Start the API
+        run: |
+          cd public
+          DB_DATABASE=infinity_url_e2e \
+          DASHBOARD_URL=http://localhost:3000 \
+          LINK_HOST=iurl.fr \
+          QUEUE_CONNECTION=sync \
+          ANALYTICS_SALT_PATH=/tmp/analytics.salt \
+          nohup php -S 0.0.0.0:8000 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php > /tmp/api.log 2>&1 &
+        working-directory: api
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: 1.4.4
+
+      - name: Cache Bun
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ hashFiles('bun.lock') }}
+
+      - name: Install the dashboard
+        run: bun install --frozen-lockfile --ignore-scripts
+
+      - name: Prepare the dashboard
+        run: bun run postinstall
+
+      - name: Install Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Build the dashboard
+        run: bun run build
+
+      - name: Start the dashboard
+        run: |
+          NUXT_PUBLIC_API_BASE=http://localhost:8000/v1 PORT=3000 \
+          nohup node .output/server/index.mjs > /tmp/web.log 2>&1 &
+
+      - name: Wait for the services
+        run: |
+          for attempt in $(seq 1 60); do
+            if curl -s -o /dev/null http://localhost:3000 \
+              && curl -s -o /dev/null http://localhost:8000/openapi.json; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Services did not start in time" >&2
+          exit 1
+
+      - name: End-to-end tests
+        env:
+          E2E_NO_WEB_SERVER: '1'
+          E2E_BASE_URL: http://localhost:3000
+          E2E_API_URL: http://localhost:8000
+          E2E_MAILPIT_URL: http://localhost:8025
+        run: bun run test:e2e
