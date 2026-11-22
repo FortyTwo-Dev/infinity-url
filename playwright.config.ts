@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
-const baseURL = process.env.E2E_BASE_URL ?? 'http://localhost:3000'
+const webPort = process.env.E2E_WEB_PORT ?? '3000'
+const baseURL = process.env.E2E_BASE_URL ?? `http://localhost:${webPort}`
 const apiBase = process.env.E2E_API_BASE ?? 'http://localhost:8000/v1'
 
 export default defineConfig({
@@ -32,7 +33,7 @@ export default defineConfig({
         reuseExistingServer: !process.env.CI,
         env: {
           NUXT_PUBLIC_API_BASE: apiBase,
-          PORT: '3000',
+          PORT: webPort,
         },
       },
 })
