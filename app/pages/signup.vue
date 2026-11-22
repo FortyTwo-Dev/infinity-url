@@ -12,6 +12,7 @@ const email = ref('')
 const password = ref('')
 const pending = ref(false)
 const done = ref(false)
+const closed = ref(false)
 const globalError = ref<string | null>(null)
 const fieldErrors = ref<Record<string, string>>({})
 
@@ -25,6 +26,15 @@ function applyProblem(error: unknown): void {
   }
 
   fieldErrors.value = fields
+
+  // A closed registration is not an error the user can fix: show the state,
+  // not a form that will fail again.
+  if (error instanceof ApiProblem && error.code === 'signups_closed') {
+    closed.value = true
+
+    return
+  }
+
   globalError.value = message(error)
 }
 
@@ -51,7 +61,16 @@ async function submit(): Promise<void> {
 
 <template>
   <section>
-    <template v-if="done">
+    <template v-if="closed">
+      <h1 class="it-h1">
+        {{ t('auth.signup.closedTitle') }}
+      </h1>
+      <p class="it-p">
+        {{ t('auth.signup.closedBody') }}
+      </p>
+    </template>
+
+    <template v-else-if="done">
       <h1 class="it-h1">
         {{ t('auth.signup.successTitle') }}
       </h1>

@@ -196,6 +196,29 @@ describe('LinkCreateForm', () => {
     resolveRequest({ ...baseLink, id: 'link-new' })
     await tick()
   })
+
+  it('explains a suspended account instead of the generic failure', async () => {
+    request.mockRejectedValueOnce(new ApiProblem('account_suspended', 403))
+
+    const wrapper = await mountCreate()
+
+    await wrapper.find('#link-destination').setValue('https://example.com/new')
+    await submit(wrapper)
+
+    expect(wrapper.text()).toContain('Ce compte est suspendu')
+    expect(wrapper.emitted('created')).toBeUndefined()
+  })
+
+  it('shows an explicit waiting state during the destination check', async () => {
+    request.mockImplementationOnce(() => new Promise(() => {}))
+
+    const wrapper = await mountCreate()
+
+    await wrapper.find('#link-destination').setValue('https://example.com/new')
+    await submit(wrapper)
+
+    expect(wrapper.text()).toContain('Vérification de la destination')
+  })
 })
 
 describe('LinkDetailForm', () => {
