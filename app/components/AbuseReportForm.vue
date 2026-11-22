@@ -29,6 +29,25 @@ watch(
   },
 )
 
+/**
+ * Linear check instead of a backtracking regular expression: the server
+ * validates the address for real, this only catches an obvious typo.
+ */
+function looksLikeEmail(value: string): boolean {
+  const at = value.indexOf('@')
+
+  if (at <= 0 || at === value.length - 1) {
+    return false
+  }
+
+  const domain = value.slice(at + 1)
+
+  return !value.includes(' ')
+    && domain.includes('.')
+    && !domain.startsWith('.')
+    && !domain.endsWith('.')
+}
+
 function validate(): boolean {
   const fields: Record<string, string> = {}
 
@@ -40,7 +59,7 @@ function validate(): boolean {
     fields.details = fieldMessage('details')
   }
 
-  if (email.value !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+  if (email.value !== '' && !looksLikeEmail(email.value)) {
     fields.email = fieldMessage('email')
   }
 

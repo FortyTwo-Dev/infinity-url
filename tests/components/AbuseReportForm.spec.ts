@@ -91,6 +91,16 @@ describe('AbuseReportForm', () => {
     expect(trap.find('input').attributes('tabindex')).toBe('-1')
   })
 
+  it('refuses an obviously malformed email before calling the API', async () => {
+    const wrapper = await mount()
+
+    await wrapper.find('input#report-email').setValue('not-an-email')
+    await submit(wrapper)
+
+    expect(request).not.toHaveBeenCalled()
+    expect(wrapper.text()).toContain('Saisissez une adresse email valide')
+  })
+
   it('refuses an empty slug before calling the API', async () => {
     const wrapper = await mount('')
     await submit(wrapper)
