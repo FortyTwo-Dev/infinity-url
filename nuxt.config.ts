@@ -6,10 +6,19 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  // The dashboard is a client-side application: the access token lives in
-  // memory, so there is nothing to render on the server. The marketing pages
-  // of S6 will move to route rules, not a second application.
-  ssr: false,
+  // The dashboard and the auth screens stay client-side: the access token
+  // lives in memory, so there is nothing to render on the server. Nuxt needs
+  // the server renderer enabled to give /report and /abuse a real SSR pass, so
+  // `/**` turns SSR off route by route and the two public pages override it.
+  ssr: true,
+
+  routeRules: {
+    '/**': { ssr: false },
+    '/report': { ssr: true },
+    '/en/report': { ssr: true },
+    '/abuse': { ssr: true, prerender: true },
+    '/en/abuse': { ssr: true, prerender: true },
+  },
 
   app: {
     head: {

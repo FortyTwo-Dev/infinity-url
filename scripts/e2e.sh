@@ -65,6 +65,8 @@ DB_DATABASE="$DB_NAME" "$PHP_BIN" artisan cache:clear >/dev/null
   LINK_URL="" \
   QUEUE_CONNECTION="sync" \
   ANALYTICS_SALT_PATH="$SALT_FILE" \
+  ABUSE_CHECK_ENABLED="false" \
+  SIGNUPS_OPEN="true" \
   "$PHP_BIN" -S 0.0.0.0:8000 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php
 ) &
 API_PID=$!

@@ -131,6 +131,8 @@ jobs:
           LINK_HOST=iurl.fr \
           QUEUE_CONNECTION=sync \
           ANALYTICS_SALT_PATH=/tmp/analytics.salt \
+          ABUSE_CHECK_ENABLED=false \
+          SIGNUPS_OPEN=true \
           nohup php -S 0.0.0.0:8000 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php > /tmp/api.log 2>&1 &
         working-directory: api
 

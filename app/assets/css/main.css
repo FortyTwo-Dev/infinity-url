@@ -527,3 +527,108 @@
 }
 
 
+
+/*
+ * Public pages: /report and /abuse. They are rendered on the server and share
+ * no shell with the authenticated dashboard. Same tokens, no capability.
+ */
+.public-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--it-bg);
+  color: var(--it-fg);
+}
+
+.public-header {
+  background: var(--it-surface);
+  border-bottom: 1px solid var(--it-border);
+}
+
+.public-header__inner {
+  width: min(100% - 2rem, 56rem);
+  margin-inline: auto;
+  padding-block: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.public-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.public-main {
+  width: min(100% - 2rem, 56rem);
+  margin-inline: auto;
+  flex: 1;
+  padding-block: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.public-card {
+  padding: 1.5rem;
+  border: 1px solid var(--it-border);
+  border-radius: var(--it-radius);
+  background: var(--it-surface);
+  color: var(--it-surface-fg);
+  display: grid;
+  gap: 1rem;
+}
+
+.report-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.report-form__anonymity {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Invisible to sight and to assistive technology: a trap, not a field. */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.abuse-steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.abuse-contact {
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .public-main {
+    width: min(100% - 1.25rem, 56rem);
+    padding-block: 1.25rem;
+  }
+
+  .public-card {
+    padding: 1rem;
+  }
+}
+
+.public-main__intro {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.public-page {
+  display: grid;
+  gap: 1.5rem;
+}

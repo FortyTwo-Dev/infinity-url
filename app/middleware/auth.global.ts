@@ -4,21 +4,33 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const auth = useAuthStore()
   const localePath = useLocalePath()
 
-  await auth.bootstrap()
+  // Public pages never touch the session: /report and /abuse are rendered on
+  // the server, with no API request and no cookie. The dashboard keeps its
+  // in-memory token and its redirect to /login.
+  if (to.meta.public === true) {
+    if (import.meta.server || to.meta.guestOnly !== true) {
+      return
+    }
 
-  if (!auth.isAuthenticated && to.meta.public !== true) {
-    return navigateTo(localePath('/login'))
+    await auth.bootstrap()
+
+    if (auth.isAuthenticated) {
+      return navigateTo(localePath('/links'))
+    }
+
+    return
   }
 
-  if (auth.isAuthenticated && to.meta.guestOnly === true) {
-    return navigateTo(localePath('/links'))
+  await auth.bootstrap()
+
+  if (!auth.isAuthenticated) {
+    return navigateTo(localePath('/login'))
   }
 
   const capability = to.meta.capability
 
   if (
-    auth.isAuthenticated
-    && typeof capability === 'string'
+    typeof capability === 'string'
     && !auth.can(capability)
   ) {
     throw createError({ statusCode: 403, fatal: true })

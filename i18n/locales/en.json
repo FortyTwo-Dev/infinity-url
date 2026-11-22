@@ -44,7 +44,9 @@
       "successTitle": "Check your inbox",
       "successBody": "If the address can be used, a verification email has just been sent. Open it to activate your account.",
       "haveAccount": "Already have an account?",
-      "loginLink": "Sign in"
+      "loginLink": "Sign in",
+      "closedTitle": "Signups are closed",
+      "closedBody": "We are not opening new accounts right now. Come back later: no data was kept."
     },
     "verify": {
       "title": "Email verification",
@@ -133,7 +135,9 @@
       "totp_invalid": "This code is invalid.",
       "token_revoked": "Your session has expired. Sign in again.",
       "network_error": "Cannot reach the service. Check your connection.",
-      "unknown": "An unexpected error occurred."
+      "unknown": "An unexpected error occurred.",
+      "account_suspended": "This account is suspended: creating links is blocked.",
+      "signups_closed": "Signups are closed right now."
     },
     "fields": {
       "email": "Enter a valid email address.",
@@ -144,7 +148,9 @@
       "code": "Enter a valid code.",
       "recovery_code": "Enter a valid recovery code.",
       "token": "This link is invalid or expired.",
-      "current_password": "The current password is incorrect."
+      "current_password": "The current password is incorrect.",
+      "category": "Choose a reason.",
+      "details": "Two thousand characters maximum."
     },
     "page": {
       "forbiddenTitle": "Access unavailable",
@@ -264,5 +270,50 @@
   "theme": {
     "toDark": "Switch to dark theme",
     "toLight": "Switch to light theme"
+  },
+  "abuse": {
+    "report": {
+      "title": "Report a link",
+      "subtitle": "A short link you received looks suspicious? Report it without creating an account.",
+      "slug": "Short link",
+      "slugHint": "The slug or the address you received, for example abc123 or https://iurl.fr/abc123.",
+      "category": "Reason",
+      "categoryPhishing": "Phishing",
+      "categoryMalware": "Malware",
+      "categoryOther": "Other",
+      "details": "Description (optional)",
+      "detailsHint": "Two thousand characters maximum.",
+      "email": "Email (optional)",
+      "emailHint": "Only to answer you, never to identify you.",
+      "anonymityNote": "Without an email, your report stays fully anonymous: no IP address, no cookie and no fingerprint is kept.",
+      "website": "Website",
+      "submit": "Report this link",
+      "submitting": "Sending…",
+      "successTitle": "Report received",
+      "successBody": "Reference: {reference}. We handle this report within 48 hours.",
+      "successAnonymity": "The confirmation does not say whether the link exists: that is deliberate, to protect every client's links.",
+      "successAgain": "Report another link",
+      "responseTime": "A human qualifies every report within 48 hours. A link is never blocked automatically."
+    },
+    "page": {
+      "title": "Abuse and reporting",
+      "subtitle": "How to report a link, and what we do with it.",
+      "procedureTitle": "The procedure",
+      "step1Title": "Within 24 business hours.",
+      "step1Body": "Acknowledgement of the report.",
+      "step2Title": "Within 48 hours.",
+      "step2Body": "Human qualification: malicious, disputed or unfounded. No report is processed automatically.",
+      "step3Title": "Immediately after qualification.",
+      "step3Body": "If the link is malicious, it is blocked: the public page answers 403 with an explanation, and the owner is notified with the motive. Aggregated statistics are kept.",
+      "step4Title": "On recurrence.",
+      "step4Body": "The destination domain is added to our local list, and the account may be suspended. Sign-in and data export remain available.",
+      "contactTitle": "Contact us",
+      "contactBody": "The single contact point, for users and authorities alike, is the abuse address. It is also published in the WHOIS and in a DNS TXT record.",
+      "reportBody": "The report form asks for no account, no cookie and no proof. It is the recommended channel for a short link.",
+      "reportCta": "Report a link",
+      "dsaTitle": "Digital Services Act",
+      "dsaBody": "Infinity URL is a hosting service under the DSA: it stores information at a user's request. It provides a contact point, a notification and action mechanism, and a motive for every restriction imposed on a user.",
+      "dsaMonitoring": "The DSA enshrines the absence of a general monitoring obligation. We do not monitor visitor clicks; we do react promptly to every notification received. This page describes an operational procedure, not a contractual text."
+    }
   }
 }
