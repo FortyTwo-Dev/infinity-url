@@ -97,6 +97,11 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           repository: FortyTwo-Dev/infinity-url-api
+          # `actions/checkout` defaults to the API repository's `main`, which
+          # is still the S0 skeleton. The dashboard needs the S3 routes and the
+          # S4 `clicks_7d` field. Merge the API PR first, or set the repository
+          # variable `API_REF` to the API feature branch while it is open.
+          ref: ${{ vars.API_REF || 'develop' }}
           path: api
 
       - uses: shivammathur/setup-php@4424c9aab975b57bd706ee5a39c6b4334d6e4f60 # 2.40.0
