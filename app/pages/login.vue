@@ -152,7 +152,7 @@ async function submitCode(): Promise<void> {
           id="login-code"
           v-model="code"
           type="text"
-          autocomplete="one-time-code"
+          autocomplete="off"
           :invalid="Boolean(fieldErrors.code ?? fieldErrors.recovery_code)"
           required
         />

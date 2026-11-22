@@ -428,9 +428,14 @@
 }
 
 .stats__skeleton {
+  display: block;
   height: 12rem;
   border-radius: var(--it-radius);
   background: var(--it-disabled-bg);
+}
+
+.app-output {
+  display: block;
 }
 
 .stats__export {

@@ -55,9 +55,9 @@ async function submit(): Promise<void> {
       <h2 class="it-h2">
         {{ t('auth.forgot.successTitle') }}
       </h2>
-      <p class="it-p" role="status">
+      <output class="it-p app-output">
         {{ t('auth.forgot.successBody') }}
-      </p>
+      </output>
     </template>
 
     <form v-else class="auth-form" @submit.prevent="submit">

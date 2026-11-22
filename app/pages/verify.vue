@@ -118,9 +118,9 @@ async function resend(): Promise<void> {
           {{ globalError }}
         </p>
 
-        <p v-if="resent" class="it-small" role="status">
+        <output v-if="resent" class="it-small">
           {{ t('auth.verify.resendSuccess') }}
-        </p>
+        </output>
 
         <ItButton
           type="submit"

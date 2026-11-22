@@ -36,14 +36,14 @@ async function resend(): Promise<void> {
 </script>
 
 <template>
-  <div class="notice" role="status">
+  <div class="notice">
     <p class="it-p">
       <strong>{{ t('auth.resendBanner.title') }}</strong>
       {{ t('auth.resendBanner.body') }}
     </p>
-    <p v-if="sent" class="it-small">
+    <output v-if="sent" class="it-small">
       {{ t('auth.resendBanner.sent') }}
-    </p>
+    </output>
     <p v-if="error" class="it-field-error" role="alert">
       {{ error }}
     </p>

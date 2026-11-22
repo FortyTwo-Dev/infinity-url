@@ -16,7 +16,9 @@ interface MailpitMessage {
 }
 
 async function messageFor(email: string): Promise<{ ID: string }> {
-  for (let attempt = 0; attempt < 40; attempt += 1) {
+  const deadline = Date.now() + 10_000
+
+  async function attempt(): Promise<{ ID: string }> {
     const response = await fetch(`${MAILPIT_URL}/api/v1/messages?limit=50`)
     const payload = (await response.json()) as { messages: MailpitMessage[] }
     const message = payload.messages.find((candidate) =>
@@ -27,10 +29,16 @@ async function messageFor(email: string): Promise<{ ID: string }> {
       return message
     }
 
+    if (Date.now() >= deadline) {
+      throw new Error(`No email for ${email}`)
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 250))
+
+    return attempt()
   }
 
-  throw new Error(`No email for ${email}`)
+  return attempt()
 }
 
 export async function verificationUrl(email: string): Promise<string> {

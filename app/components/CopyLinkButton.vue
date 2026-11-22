@@ -11,12 +11,11 @@ async function copy(): Promise<void> {
   failed.value = false
 
   try {
-    if (navigator.clipboard?.writeText !== undefined) {
-      await navigator.clipboard.writeText(props.value)
-    } else {
-      fallbackCopy(props.value)
+    if (navigator.clipboard?.writeText === undefined) {
+      throw new Error('Clipboard API unavailable')
     }
 
+    await navigator.clipboard.writeText(props.value)
     copied.value = true
 
     if (timer !== null) {
@@ -29,19 +28,6 @@ async function copy(): Promise<void> {
   } catch {
     failed.value = true
   }
-}
-
-function fallbackCopy(value: string): void {
-  const textarea = document.createElement('textarea')
-
-  textarea.value = value
-  textarea.setAttribute('readonly', '')
-  textarea.style.position = 'fixed'
-  textarea.style.opacity = '0'
-  document.body.appendChild(textarea)
-  textarea.select()
-  document.execCommand('copy')
-  textarea.remove()
 }
 
 onBeforeUnmount(() => {

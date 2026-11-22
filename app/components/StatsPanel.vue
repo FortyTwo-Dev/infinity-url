@@ -177,9 +177,9 @@ watch(preset, () => {
           <strong>{{ t('common.dash') }}</strong>
         </div>
       </div>
-      <div class="stats__skeleton" role="status">
+      <output class="stats__skeleton">
         <span class="it-sr-only">{{ t('common.loading') }}</span>
-      </div>
+      </output>
     </template>
 
     <ErrorBanner v-else-if="error" :message="error" @retry="load" />

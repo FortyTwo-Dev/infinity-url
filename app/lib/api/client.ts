@@ -30,7 +30,11 @@ let authHandlers: ApiAuthHandlers = {
 }
 
 export function configureApi(options: { baseUrl: string }): void {
-  baseUrl = options.baseUrl.replace(/\/+$/, '')
+  baseUrl = options.baseUrl
+
+  while (baseUrl.endsWith('/')) {
+    baseUrl = baseUrl.slice(0, -1)
+  }
 }
 
 export function configureAuth(handlers: ApiAuthHandlers): void {

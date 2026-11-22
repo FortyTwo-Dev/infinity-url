@@ -173,9 +173,9 @@ async function submit(): Promise<void> {
       {{ globalError }}
     </p>
 
-    <p v-if="pending" class="it-small" role="status">
+    <output v-if="pending" class="it-small">
       {{ t('links.create.waiting') }}
-    </p>
+    </output>
 
     <ItButton
       type="submit"

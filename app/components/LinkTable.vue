@@ -5,7 +5,7 @@ import { truncate } from '~/lib/format/text'
 import { displayStatus } from '~/lib/links/status'
 import type { LinkItem } from '~/stores/links'
 
-const props = defineProps<{
+defineProps<{
   items: LinkItem[]
   loading: boolean
   loadingMore: boolean
@@ -13,8 +13,6 @@ const props = defineProps<{
   error: string | null
   hasFilters: boolean
 }>()
-
-void props
 
 const emit = defineEmits<{
   retry: []
@@ -42,13 +40,8 @@ function destination(item: LinkItem): string {
 </script>
 
 <template>
-  <div
-    v-if="loading && items.length === 0"
-    class="link-skeletons"
-    role="status"
-    aria-live="polite"
-  >
-    <span class="it-sr-only">{{ t('common.loading') }}</span>
+  <div v-if="loading && items.length === 0" class="link-skeletons">
+    <output class="it-sr-only">{{ t('common.loading') }}</output>
     <div v-for="row in 3" :key="row" class="link-skeleton" />
   </div>
 

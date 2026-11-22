@@ -159,9 +159,9 @@ watch(() => props.shortUrl, () => {
       {{ t('qr.statusWarning') }}
     </p>
 
-    <p v-if="loading" class="it-small" role="status">
+    <output v-if="loading" class="it-small">
       {{ t('qr.loading') }}
-    </p>
+    </output>
 
     <ErrorBanner v-else-if="failed" :message="t('qr.error')" @retry="generate" />
 

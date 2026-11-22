@@ -84,9 +84,9 @@ onMounted(load)
   <section>
     <div v-if="loading" class="detail">
       <div class="link-skeleton detail__skeleton" />
-      <p class="it-small it-muted" role="status">
+      <output class="it-small it-muted">
         {{ t('common.loading') }}
-      </p>
+      </output>
     </div>
 
     <div v-else-if="notFound" class="empty-state">
@@ -128,16 +128,16 @@ onMounted(load)
         <CopyLinkButton :value="link.short_url" />
       </div>
 
-      <p v-if="status === 'expired'" class="notice" role="status">
+      <output v-if="status === 'expired'" class="notice">
         {{ t('links.detail.expiredNote') }}
-      </p>
-      <p v-else-if="status === 'blocked'" class="notice" role="status">
+      </output>
+      <output v-else-if="status === 'blocked'" class="notice">
         {{ t('links.detail.blockedNote') }}
-      </p>
-      <p v-else-if="status === 'disabled'" class="notice" role="status">
+      </output>
+      <output v-else-if="status === 'disabled'" class="notice">
         {{ t('links.detail.disabledNote') }}
         {{ t('links.detail.reactivateWithExpiry') }}
-      </p>
+      </output>
 
       <LinkDetailForm
         v-if="canWrite"
