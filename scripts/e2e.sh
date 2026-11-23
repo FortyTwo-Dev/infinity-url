@@ -11,6 +11,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 API_DIR="${INFINITY_URL_API_DIR:-$ROOT/../infinity-url-api}"
 PHP_BIN="${PHP_BIN:-$HOME/.config/herd-lite/bin/php}"
 DB_NAME="${E2E_DB_NAME:-infinity_url_e2e}"
+E2E_WEB_PORT="${E2E_WEB_PORT:-3002}"
 SALT_FILE="$(mktemp)"
 API_PID=""
 
@@ -60,7 +61,7 @@ DB_DATABASE="$DB_NAME" "$PHP_BIN" artisan cache:clear >/dev/null
 (
   cd "$API_DIR/public"
   DB_DATABASE="$DB_NAME" \
-  DASHBOARD_URL="http://localhost:3000" \
+  DASHBOARD_URL="http://localhost:3002" \
   LINK_HOST="iurl.fr" \
   LINK_URL="" \
   QUEUE_CONNECTION="sync" \
@@ -83,4 +84,6 @@ cd "$ROOT"
 E2E_API_URL="http://localhost:8000" \
 E2E_MAILPIT_URL="http://localhost:8025" \
 E2E_API_BASE="http://localhost:8000/v1" \
+E2E_WEB_PORT="$E2E_WEB_PORT" \
+E2E_BASE_URL="http://localhost:$E2E_WEB_PORT" \
 bun run test:e2e

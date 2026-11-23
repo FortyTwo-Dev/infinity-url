@@ -3,7 +3,7 @@ import type { Request } from '@playwright/test'
 
 import { requestHosts } from './helpers'
 
-const baseURL = process.env.E2E_BASE_URL ?? 'http://localhost:3000'
+const baseURL = process.env.E2E_BASE_URL ?? 'http://localhost:3002'
 const appHost = new URL(baseURL).host
 
 test('the home page is a public presentation, not a session redirect', async ({ page, context }) => {

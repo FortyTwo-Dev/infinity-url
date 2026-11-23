@@ -77,7 +77,7 @@ test('signup, verification, creation, click and statistics', async ({ page }) =>
     (host) => host !== 'example.com' && host !== '',
   )
   const dashboardHost = new URL(
-    process.env.E2E_BASE_URL ?? 'http://localhost:3000',
+    process.env.E2E_BASE_URL ?? 'http://localhost:3002',
   ).host
 
   expect(hosts.sort()).toEqual(

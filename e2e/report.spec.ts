@@ -7,7 +7,7 @@ const API_URL = process.env.E2E_API_URL ?? 'http://localhost:8000'
 const API_BASE = process.env.E2E_API_BASE ?? 'http://localhost:8000/v1'
 
 const allowedHosts = [
-  new URL(process.env.E2E_BASE_URL ?? 'http://localhost:3000').host,
+  new URL(process.env.E2E_BASE_URL ?? 'http://localhost:3002').host,
   new URL(API_URL).host,
 ]
 
@@ -40,7 +40,9 @@ test('the abuse page is readable and holds at 360 px', async ({ page }) => {
   await page.goto('/abuse')
 
   await expect(page.getByRole('heading', { name: 'Abus et signalement' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Signaler un lien' })).toHaveAttribute('href', '/report')
+  await expect(
+    page.getByRole('main').getByRole('link', { name: 'Signaler un lien' }),
+  ).toHaveAttribute('href', '/report')
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow')
 
   const overflow = await page.evaluate(

@@ -12,7 +12,7 @@ const documents = [
   { slug: 'client-clause', title: 'Clause client — mesure d’audience des liens' },
 ]
 
-const baseURL = process.env.E2E_BASE_URL ?? 'http://localhost:3000'
+const baseURL = process.env.E2E_BASE_URL ?? 'http://localhost:3002'
 const appHost = new URL(baseURL).host
 
 for (const document of documents) {
