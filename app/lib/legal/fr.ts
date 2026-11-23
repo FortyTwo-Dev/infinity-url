@@ -48,9 +48,9 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
         ],
       },
       {
-        heading: 'Marque',
+        heading: 'Nom public',
         paragraphs: [
-          '« Infinity Project » est la marque publique de la maison. « Infinity URL » est le nom du produit. La partie contractante est InfinityApp.',
+          '« Infinity Project » est le nom public de la maison. Ce nom n’est pas une marque déposée. « Infinity URL » est le nom du produit. La partie contractante est InfinityApp.',
         ],
       },
       {
@@ -69,7 +69,7 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
       {
         heading: 'Propriété intellectuelle',
         paragraphs: [
-          'Le code source est publié sous licence AGPL-3.0-only. Le lien « Code source » du pied de page mène au dépôt. Le nom, l’identité visuelle et les textes restent la propriété de l’éditeur, sauf mention contraire.',
+          'Le code source est publié sous licence AGPL-3.0-only. Le lien « Code source » du pied de page mène au dépôt. La licence couvre le code, pas le nom « Infinity Project », ni l’identité visuelle, ni les textes du site.',
         ],
       },
       {
@@ -197,7 +197,7 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
       {
         heading: 'Usages interdits',
         paragraphs: [
-          'Il est interdit de créer un lien vers un contenu illicite, un site d’hameçonnage ou de phishing, un logiciel malveillant, un contenu frauduleux, une usurpation d’identité ou de marque, du spam, ou un contenu qui contourne une mesure de blocage.',
+          'Il est interdit de créer un lien vers un contenu illicite, un site d’hameçonnage ou de phishing, un logiciel malveillant, un contenu frauduleux, une usurpation d’identité ou d’une marque d’un tiers, du spam, ou un contenu qui contourne une mesure de blocage.',
           'Il est interdit d’utiliser le service pour masquer la destination réelle d’un lien ou pour tromper un utilisateur sur la destination.',
           'Le propriétaire du lien est responsable de la destination et de la conformité du lien.',
         ],
