@@ -50,7 +50,7 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
       {
         heading: 'Nom public',
         paragraphs: [
-          '« Infinity Project » est le nom public de la maison. Ce nom n’est pas une marque déposée. « Infinity URL » est le nom du produit. La partie contractante est InfinityApp.',
+          '« Infinity Project » est le nom public de la maison, et « Infinity URL » le nom du produit. Ces noms ne sont pas des marques déposées. La partie contractante est InfinityApp.',
         ],
       },
       {
@@ -69,7 +69,7 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
       {
         heading: 'Propriété intellectuelle',
         paragraphs: [
-          'Le code source est publié sous licence AGPL-3.0-only. Le lien « Code source » du pied de page mène au dépôt. La licence couvre le code, pas le nom « Infinity Project », ni l’identité visuelle, ni les textes du site.',
+          'Le code source est publié sous licence AGPL-3.0-only. Le lien « Code source » du pied de page mène au dépôt. La licence couvre le code, pas les noms « Infinity Project » et « Infinity URL », ni l’identité visuelle, ni les textes du site.',
         ],
       },
       {
