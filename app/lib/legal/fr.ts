@@ -302,6 +302,7 @@ export const LEGAL_DOCUMENTS: Record<LegalSlug, LegalDocument> = {
         paragraphs: [
           'À la création d’un lien, nous envoyons une requête HEAD, puis un GET partiel, à la destination fournie, avec l’en-tête InfinityURL-AbuseCheck/1.0. Le site cible voit notre adresse IP, l’URL testée et les redirections suivies.',
           'Nous consultons le DNS, les blocklists locales, le certificat TLS et RDAP. RDAP ne reçoit que le domaine enregistrable, jamais l’URL complète. Aucune URL client n’est envoyée à un service de réputation.',
+          'En cas d’échec technique du contrôle, l’adresse testée peut apparaître dans les journaux applicatifs, conservés 72 heures.',
           'Base légale : intérêt légitime (anti-abus).',
         ],
       },
