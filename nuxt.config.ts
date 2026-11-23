@@ -18,6 +18,30 @@ export default defineNuxtConfig({
     '/en/report': { ssr: true },
     '/abuse': { ssr: true, prerender: true },
     '/en/abuse': { ssr: true, prerender: true },
+    '/legal/**': { ssr: true, prerender: true },
+    '/en/legal/**': { ssr: true, prerender: true },
+  },
+
+  // The wildcard above renders the pages, but Nitro needs the concrete routes
+  // to emit them at build time: a prerender rule alone does not enumerate a
+  // dynamic route. The list is the six documents in both locales.
+  nitro: {
+    prerender: {
+      routes: [
+        '/legal/notice',
+        '/legal/terms',
+        '/legal/aup',
+        '/legal/privacy',
+        '/legal/subcontractors',
+        '/legal/client-clause',
+        '/en/legal/notice',
+        '/en/legal/terms',
+        '/en/legal/aup',
+        '/en/legal/privacy',
+        '/en/legal/subcontractors',
+        '/en/legal/client-clause',
+      ],
+    },
   },
 
   app: {

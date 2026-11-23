@@ -285,7 +285,7 @@
       "detailsHint": "Deux mille caractères maximum.",
       "email": "Email (facultatif)",
       "emailHint": "Uniquement pour vous répondre, jamais pour vous identifier.",
-      "anonymityNote": "Sans email, votre signalement reste entièrement anonyme : aucune adresse IP, aucun cookie et aucune empreinte ne sont conservés.",
+      "anonymityNote": "Sans email, votre signalement ne contient aucune donnée permettant de vous identifier : aucune adresse IP, aucun cookie et aucune empreinte ne sont conservés.",
       "website": "Site web",
       "submit": "Signaler ce lien",
       "submitting": "Envoi…",
@@ -299,8 +299,8 @@
       "title": "Abus et signalement",
       "subtitle": "Comment signaler un lien, et ce que nous en faisons.",
       "procedureTitle": "La procédure",
-      "step1Title": "Sous 24 heures ouvrées.",
-      "step1Body": "Accusé de réception du signalement.",
+      "step1Title": "Réception immédiate.",
+      "step1Body": "Le signalement est enregistré. Aucun accusé de réception automatique n'est envoyé ; si vous avez laissé un email, nous pouvons vous répondre.",
       "step2Title": "Sous 48 heures.",
       "step2Body": "Qualification humaine : malveillant, litigieux ou infondé. Aucun signalement n'est traité automatiquement.",
       "step3Title": "Immédiatement après qualification.",
@@ -313,7 +313,23 @@
       "reportCta": "Signaler un lien",
       "dsaTitle": "Digital Services Act",
       "dsaBody": "Infinity URL est un service d'hébergement au sens du DSA : il stocke, à la demande d'un utilisateur, des informations. Il fournit un point de contact, un mécanisme de notification et d'action, et motive chaque restriction imposée à un utilisateur.",
-      "dsaMonitoring": "Le DSA consacre l'absence d'obligation générale de surveillance. Nous ne surveillons pas les clics des visiteurs ; en revanche, nous réagissons promptement à chaque notification reçue. Cette page décrit une procédure opérationnelle, pas un texte contractuel."
+      "dsaMonitoring": "Le DSA consacre l'absence d'obligation générale de surveillance. Nous ne surveillons pas les clics des visiteurs ; en revanche, nous réagissons promptement à chaque notification reçue. Cette page décrit une procédure opérationnelle, pas un texte contractuel.",
+      "legalTitle": "Politique d'usage et confidentialité",
+      "legalBody": "La politique d'usage acceptable décrit les usages interdits et la procédure de retrait. La politique de confidentialité décrit les données, les durées de conservation et vos droits."
     }
+  },
+  "legal": {
+    "nav": {
+      "aria": "Informations légales",
+      "notice": "Mentions légales",
+      "terms": "CGU",
+      "aup": "AUP",
+      "privacy": "Confidentialité",
+      "subcontractors": "Sous-traitants",
+      "clientClause": "Clause client"
+    },
+    "updated": "Dernière mise à jour : {date}.",
+    "back": "Retour à l'accueil",
+    "englishNotice": "Ce document juridique est publié en français uniquement ; la version française fait foi."
   }
 }

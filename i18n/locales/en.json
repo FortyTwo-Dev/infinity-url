@@ -285,7 +285,7 @@
       "detailsHint": "Two thousand characters maximum.",
       "email": "Email (optional)",
       "emailHint": "Only to answer you, never to identify you.",
-      "anonymityNote": "Without an email, your report stays fully anonymous: no IP address, no cookie and no fingerprint is kept.",
+      "anonymityNote": "Without an email, your report contains no data that could identify you: no IP address, no cookie and no fingerprint is kept.",
       "website": "Website",
       "submit": "Report this link",
       "submitting": "Sending…",
@@ -299,8 +299,8 @@
       "title": "Abuse and reporting",
       "subtitle": "How to report a link, and what we do with it.",
       "procedureTitle": "The procedure",
-      "step1Title": "Within 24 business hours.",
-      "step1Body": "Acknowledgement of the report.",
+      "step1Title": "Immediate receipt.",
+      "step1Body": "The report is recorded. No automatic acknowledgement is sent; if you left an email, we may answer you.",
       "step2Title": "Within 48 hours.",
       "step2Body": "Human qualification: malicious, disputed or unfounded. No report is processed automatically.",
       "step3Title": "Immediately after qualification.",
@@ -313,7 +313,23 @@
       "reportCta": "Report a link",
       "dsaTitle": "Digital Services Act",
       "dsaBody": "Infinity URL is a hosting service under the DSA: it stores information at a user's request. It provides a contact point, a notification and action mechanism, and a motive for every restriction imposed on a user.",
-      "dsaMonitoring": "The DSA enshrines the absence of a general monitoring obligation. We do not monitor visitor clicks; we do react promptly to every notification received. This page describes an operational procedure, not a contractual text."
+      "dsaMonitoring": "The DSA enshrines the absence of a general monitoring obligation. We do not monitor visitor clicks; we do react promptly to every notification received. This page describes an operational procedure, not a contractual text.",
+      "legalTitle": "Acceptable use and privacy",
+      "legalBody": "The acceptable use policy describes prohibited uses and the takedown procedure. The privacy policy describes the data, the retention periods and your rights."
     }
+  },
+  "legal": {
+    "nav": {
+      "aria": "Legal information",
+      "notice": "Legal notice",
+      "terms": "Terms",
+      "aup": "AUP",
+      "privacy": "Privacy",
+      "subcontractors": "Subprocessors",
+      "clientClause": "Client clause"
+    },
+    "updated": "Last updated: {date}.",
+    "back": "Back to home",
+    "englishNotice": "This legal document is published in French only; the French version prevails."
   }
 }

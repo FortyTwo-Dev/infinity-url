@@ -76,5 +76,23 @@ useSeoMeta({
       {{ t('abuse.page.dsaMonitoring') }}
     </p>
   </section>
+
+  <section class="public-card">
+    <h2 class="it-h2">
+      {{ t('abuse.page.legalTitle') }}
+    </h2>
+    <p class="it-p">
+      {{ t('abuse.page.legalBody') }}
+    </p>
+    <p class="it-p">
+      <NuxtLink :to="localePath('/legal/aup')" class="it-link-accent">
+        {{ t('legal.nav.aup') }}
+      </NuxtLink>
+      ·
+      <NuxtLink :to="localePath('/legal/privacy')" class="it-link-accent">
+        {{ t('legal.nav.privacy') }}
+      </NuxtLink>
+    </p>
+  </section>
   </div>
 </template>

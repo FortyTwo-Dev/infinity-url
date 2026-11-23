@@ -86,6 +86,14 @@
   gap: 0.75rem;
 }
 
+.app-footer__legal,
+.app-footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
 .auth-shell {
   min-height: 100dvh;
   padding: 1rem;
@@ -631,4 +639,21 @@
 .public-page {
   display: grid;
   gap: 1.5rem;
+}
+
+.legal-page {
+  max-width: 46rem;
+}
+
+.legal-section {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.legal-notice {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--it-border);
+  border-radius: var(--it-radius);
+  background: var(--it-surface);
+  color: var(--it-surface-fg);
 }
