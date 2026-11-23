@@ -14,6 +14,8 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/**': { ssr: false },
+    '/': { ssr: true, prerender: true },
+    '/en': { ssr: true, prerender: true },
     '/report': { ssr: true },
     '/en/report': { ssr: true },
     '/abuse': { ssr: true, prerender: true },
@@ -28,6 +30,8 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
+        '/',
+        '/en',
         '/legal/notice',
         '/legal/terms',
         '/legal/aup',

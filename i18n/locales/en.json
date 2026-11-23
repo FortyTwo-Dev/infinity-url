@@ -331,5 +331,46 @@
     "updated": "Last updated: {date}.",
     "back": "Back to home",
     "englishNotice": "This legal document is published in French only; the French version prevails."
+  },
+  "marketing": {
+    "meta": {
+      "title": "Infinity URL — short links without visitor profiles",
+      "description": "A privacy-first URL shortener: 302 redirects without an interstitial, no cookie on iurl.fr, aggregated statistics and QR codes generated in the browser."
+    },
+    "hero": {
+      "title": "Short links, without visitor profiles.",
+      "subtitle": "Infinity URL shortens your links, redirects visitors and measures audience without cookies, without writing an IP address to the database and without a row per click.",
+      "signup": "Create an account",
+      "login": "Sign in"
+    },
+    "product": {
+      "title": "A short link, a redirect, nothing else.",
+      "body": "The iurl.fr domain serves redirects and static error pages only. A successful response is a 302 with no body: no interstitial, no countdown, no script.",
+      "step1": "You create a link and choose its destination.",
+      "step2": "The visitor opens iurl.fr/abc123 and receives an immediate 302.",
+      "step3": "The click feeds an aggregated counter: clicks, device class and unique visitors per link."
+    },
+    "privacy": {
+      "title": "What we do not do.",
+      "noCookie": "No cookie is set on iurl.fr.",
+      "noIp": "No IP address is written to the database; it only exists in memory.",
+      "noClickRow": "No row per click: the statistics are aggregated counters.",
+      "aggregated": "Uniques are counted per link, never cross-referenced between links.",
+      "qr": "The QR code is generated in your browser, with no network call.",
+      "noThirdParty": "No third-party script, no external font, no pixel."
+    },
+    "offer": {
+      "title": "The v0.1 offer.",
+      "body": "The service is free in v0.1: five active links, 30-day statistics and QR included.",
+      "sla": "No SLA and no paid offer in v0.1. The service is provided as is."
+    },
+    "links": {
+      "title": "Go further.",
+      "report": "Report a link",
+      "abuse": "Abuse procedure",
+      "notice": "Legal notice",
+      "privacy": "Privacy",
+      "source": "Source code"
+    }
   }
 }

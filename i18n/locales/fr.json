@@ -331,5 +331,46 @@
     "updated": "Dernière mise à jour : {date}.",
     "back": "Retour à l'accueil",
     "englishNotice": "Ce document juridique est publié en français uniquement ; la version française fait foi."
+  },
+  "marketing": {
+    "meta": {
+      "title": "Infinity URL — des liens courts, sans profil de visiteurs",
+      "description": "Un raccourcisseur de liens privacy-first : redirection 302 sans interstitiel, aucun cookie sur iurl.fr, statistiques agrégées et QR généré dans le navigateur."
+    },
+    "hero": {
+      "title": "Des liens courts, sans profil de visiteurs.",
+      "subtitle": "Infinity URL raccourcit vos liens, redirige les visiteurs et compte l'audience sans cookie, sans adresse IP en base et sans ligne par clic.",
+      "signup": "Créer un compte",
+      "login": "Se connecter"
+    },
+    "product": {
+      "title": "Un lien court, une redirection, rien d'autre.",
+      "body": "Le domaine iurl.fr ne sert que des redirections et des pages d'erreur statiques. La réponse de succès est un 302 sans corps : pas d'interstitiel, pas de compte à rebours, pas de script.",
+      "step1": "Vous créez un lien et choisissez sa destination.",
+      "step2": "Le visiteur ouvre iurl.fr/abc123 et reçoit un 302 immédiat.",
+      "step3": "Le clic alimente un compteur agrégé : clics, classe d'appareil et visiteurs uniques par lien."
+    },
+    "privacy": {
+      "title": "Ce que nous ne faisons pas.",
+      "noCookie": "Aucun cookie n'est déposé sur iurl.fr.",
+      "noIp": "Aucune adresse IP n'est écrite en base ; elle n'existe qu'en mémoire.",
+      "noClickRow": "Aucune ligne par clic : les statistiques sont des compteurs agrégés.",
+      "aggregated": "Les uniques sont comptés par lien, jamais recoupés entre plusieurs liens.",
+      "qr": "Le QR code est généré dans votre navigateur, sans appel réseau.",
+      "noThirdParty": "Aucun script tiers, aucune police externe, aucun pixel."
+    },
+    "offer": {
+      "title": "L'offre v0.1.",
+      "body": "Le service est gratuit en v0.1 : cinq liens actifs, statistiques sur 30 jours et QR inclus.",
+      "sla": "Aucun SLA et aucune offre payante ne sont proposés en v0.1. Le service est fourni en l'état."
+    },
+    "links": {
+      "title": "Aller plus loin.",
+      "report": "Signaler un lien",
+      "abuse": "Procédure d'abus",
+      "notice": "Mentions légales",
+      "privacy": "Confidentialité",
+      "source": "Code source"
+    }
   }
 }
